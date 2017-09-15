@@ -42,7 +42,8 @@ const categories = (deps) => {
             return false
           }
           resolve({
-            category: { name, id }
+            category: { name, id },
+            affectedRows: results.affectedRows
           })
         })
       })
