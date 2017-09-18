@@ -5,7 +5,7 @@ const { connection, errorHandler } = require('./setup')
 
 const users = require('../users')({ connection, errorHandler })
 
-const create = () => users.save('user@test.com', '7c4a8d09ca3762af61e59520943dc26494f8941b')
+const create = () => users.save('user@test.com', '123456')
 
 test.beforeEach(t => connection.query('TRUNCATE TABLE users'))
 test.after.always(t => connection.query('TRUNCATE TABLE users'))
@@ -24,7 +24,7 @@ test('Criação de usuário', async t => {
 
 test('Atualização de senha de usuário', async t => {
   await create()
-  const updated = await users.update(1, 'dd5fef9c1c1da1394d6d34b248c51be2ad740840')
+  const updated = await users.update(1, '123456789')
   t.is(updated.affectedRows, 1)
 })
 
